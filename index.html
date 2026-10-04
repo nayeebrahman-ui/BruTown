@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="img/cup.png">
+<title>BruTown Cafe</title>
+<meta name="description" content="BruTown Cafe in Siddeswari, Dhaka. Coffee, comfort food, 35+ board games, live music and stand-up comedy nights. Dine-in, delivery, takeout and reservations.">
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="BruTown Cafe | Live. Love. Eat.">
+<meta property="og:description" content="Coffee, comfort food, board games, live music and stand-up nights in Siddeswari, Dhaka.">
+<meta property="og:image" content="/img/og.jpg">
+<meta name="theme-color" content="#2B0A18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Permanent+Marker&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"BruTown Cafe","slogan":"Live. Love. Eat.","image":"img/og.jpg","telephone":"+8801772992551","email":"brutowncafe@gmail.com","priceRange":"৳৳","servesCuisine":["Coffee","Cafe","Pasta","Burgers","Desserts"],"address":{"@type":"PostalAddress","streetAddress":"62/A Siddeswari Road, Safa Apartment","addressLocality":"Dhaka","postalCode":"1217","addressCountry":"BD"},"geo":{"@type":"GeoCoordinates","latitude":23.7428186,"longitude":90.4075375},"hasMap":"https://maps.app.goo.gl/qj9ZL5W2DqJHPynN7","sameAs":["https://www.facebook.com/BruTownCafe/"],"acceptsReservations":true,"aggregateRating":{"@type":"AggregateRating","ratingValue":4.2,"reviewCount":2725},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Monday","Tuesday","Wednesday","Thursday"],"opens":"10:00","closes":"22:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"09:00","closes":"22:30"}]}
+</script>
+<style>
+/* Layout: one maroon wall, top to bottom. Pinned mural hero that fans out event photos on scroll,
+   then colour-block event posters that stack, a tabbed menu, photo walls, and a visit block.
+   Radius rule: buttons and pills are full-pill, panels 22px, photo prints 4px. Single dark world by choice. */
+:root{
+  color-scheme:dark;
+  --wall:#2B0A18; --wall-2:#3A0E21; --wall-3:#51152F;
+  --cream:#FFF0E0; --blush:#E9BDB6;
+  --orange:#FF8A1F; --orange-hi:#FFA64D;
+  --pink:#FF5FA8; --teal:#35D6BC; --sun:#FFD23F;
+  --line:rgba(255,240,224,.16);
+  --display:"Bagel Fat One","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --body:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --marker:"Permanent Marker","Comic Sans MS",cursive;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --gutter:max(16px,4.5vw);
+  --nav-h:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px)}
+body{margin:0;background:var(--wall);color:var(--cream);font:400 1.0625rem/1.55 var(--body);-webkit-font-smoothing:antialiased}
+::selection{background:var(--orange);color:var(--wall)}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+html{scrollbar-color:var(--wall-3) var(--wall)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:.2em}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:clamp(2.5rem,8vw,5rem)}
+p{margin:0}
+.wrap{max-width:1280px;margin-inline:auto;padding-inline:var(--gutter)}
+.page{overflow-x:clip}
+section{position:relative}
+.sec{padding-block:clamp(72px,11vw,140px)}
+.lede{color:var(--blush);max-width:52ch;margin-top:18px;font-size:1.125rem}
+.o{color:var(--orange)} .p{color:var(--pink)} .t{color:var(--teal)} .y{color:var(--sun)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:2px solid transparent;font:700 1rem/1 var(--body);text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform 160ms var(--ease-out),background-color 200ms ease,color 200ms ease}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-go{background:var(--orange);color:var(--wall)}
+.btn-line{border-color:var(--cream);color:var(--cream);background:rgba(43,10,24,.55)}
+.btn-dark{background:var(--wall);color:var(--cream)}
+@media (hover:hover) and (pointer:fine){
+  .btn-go:hover{background:var(--orange-hi)}
+  .btn-line:hover{background:var(--cream);color:var(--wall)}
+  .btn-dark:hover{background:var(--wall-3)}
+}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(43,10,24,.82);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border-bottom:1px solid var(--line)}
+.nav-in{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:400 1.35rem/1 var(--display)}
+.brand span{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--cream);overflow:hidden}
+.brand img{width:36px;height:auto;transform:translateX(2px)}
+.nav-links{display:none;gap:28px;font-weight:500}
+.nav-links a{text-decoration:none;padding:8px 0}
+@media (hover:hover){.nav-links a:hover{color:var(--orange)}}
+.nav .btn{min-height:42px;padding:0 20px;font-size:.95rem}
+@media (min-width:860px){.nav-links{display:flex}}
+@media (prefers-reduced-transparency:reduce){.nav{background:var(--wall);backdrop-filter:none}}
+
+/* hero */
+.hero-pin{min-height:100svh;display:grid;align-items:center;overflow:clip;position:relative;padding-top:calc(var(--nav-h) + env(safe-area-inset-top,0px))}
+.hero-wall{position:absolute;inset:0;z-index:0}
+.hero-wall img{width:100%;height:100%;object-fit:cover;object-position:60% 55%;opacity:.62}
+.hero-wall::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--wall) 8%,rgba(43,10,24,.86) 38%,rgba(43,10,24,.25) 100%),linear-gradient(0deg,var(--wall) 0%,rgba(43,10,24,0) 30%)}
+.hero-grid{position:relative;z-index:1;display:grid;gap:clamp(18px,4svh,40px);padding-block:clamp(16px,4svh,48px)}
+.hero h1{font-size:clamp(3rem,13vw,6rem);line-height:.92}
+.hero h1 span{display:inline-block;position:relative}
+.hero h1 span::after{content:"";position:absolute;left:-2%;right:-2%;bottom:-.02em;height:.13em;border-radius:99px;background:currentColor;opacity:.9;transform-origin:0 50%}
+.hero-sub{max-width:34ch;font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--cream);margin-top:18px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;position:relative}
+.tag{position:absolute;left:8px;top:calc(100% + 14px);font:400 clamp(1.25rem,3.4vw,1.9rem)/1 var(--marker);color:var(--sun);transform:rotate(-6deg);white-space:nowrap}
+.stack{position:relative;height:min(36svh,340px);width:100%;max-width:560px;margin-inline:auto}
+.print{position:absolute;left:50%;top:50%;width:min(56%,290px);margin:0;padding:7px 7px 0;background:var(--cream);border-radius:4px;box-shadow:0 18px 40px -12px rgba(10,0,6,.75);transform:translate(-50%,-50%) translate(var(--x0),var(--y0)) rotate(var(--r0));will-change:transform}
+.print img{aspect-ratio:4/3;object-fit:cover;width:100%;border-radius:2px}
+.print figcaption{font:400 1.05rem/2.1 var(--marker);color:var(--wall);text-align:center}
+.print.poster{width:min(30%,150px);padding:5px}
+.print.poster img{aspect-ratio:433/700}
+.p1{--x0:-34%;--y0:-10%;--r0:-7deg;--x1:-52%;--y1:-26%;--r1:-12deg}
+.p2{--x0:30%;--y0:4%;--r0:6deg;--x1:50%;--y1:-18%;--r1:10deg}
+.p3{--x0:-4%;--y0:20%;--r0:-2deg;--x1:-30%;--y1:44%;--r1:-6deg}
+.p4{--x0:150%;--y0:-22%;--r0:9deg;--x1:185%;--y1:26%;--r1:15deg}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:1.05fr .95fr;align-items:center}
+  .stack{height:min(62svh,560px)}
+  .print{width:min(60%,340px)}
+  .print.poster{width:min(32%,180px)}
+}
+@keyframes fan{to{transform:translate(-50%,-50%) translate(var(--x1),var(--y1)) rotate(var(--r1)) scale(1.06)}}
+@keyframes wallzoom{to{transform:scale(1.16) translateY(-3%)}}
+@keyframes stroke{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes tagin{from{opacity:0;transform:rotate(-14deg) scale(.9)}to{opacity:1;transform:rotate(-6deg) scale(1)}}
+@keyframes lift{to{transform:translateY(-6%)}}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline:view()){
+    .hero{height:210svh;view-timeline:--hero block}
+    .hero-pin{position:sticky;top:0;height:100svh}
+    .print{animation:fan linear both;animation-timeline:--hero;animation-range:contain 0% contain 85%}
+    .hero-wall img{animation:wallzoom linear both;animation-timeline:--hero;animation-range:contain 0% contain 100%}
+    .hero h1 span::after{animation:stroke linear both;animation-timeline:--hero}
+    .hero h1 .o::after{animation-range:contain 5% contain 30%}
+    .hero h1 .p::after{animation-range:contain 25% contain 50%}
+    .hero h1 .t::after{animation-range:contain 45% contain 70%}
+    .tag{animation:tagin linear both;animation-timeline:--hero;animation-range:contain 55% contain 80%}
+    .hero-copy{animation:lift linear both;animation-timeline:--hero;animation-range:contain 0% contain 100%}
+    .rise{animation:rise linear both;animation-timeline:view();animation-range:entry 5% entry 45%}
+    .wipe{animation:wipe linear both;animation-timeline:view();animation-range:entry 10% cover 35%}
+  }
+}
+@keyframes rise{from{opacity:.25;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes wipe{from{clip-path:inset(0 0 38% 0 round 14px)}to{clip-path:inset(0 0 0 0 round 14px)}}
+
+/* services marquee */
+.ticker{background:var(--orange);color:var(--wall);font:400 clamp(1.3rem,3.6vw,2rem)/1 var(--display);overflow:hidden;padding-block:16px;transform:rotate(-1.2deg) scale(1.03);position:relative;z-index:2}
+.ticker-track{display:flex;width:max-content;animation:slide 26s linear infinite}
+.ticker ul{display:flex;gap:34px;list-style:none;margin:0;padding:0 17px;align-items:center;flex:none}
+.ticker li{display:flex;align-items:center;gap:34px;white-space:nowrap}
+.ticker li::after{content:"";width:.5em;height:.5em;background:var(--wall);border-radius:2px;transform:rotate(45deg)}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none;width:auto}.ticker ul{flex-wrap:wrap;row-gap:10px;justify-content:center}.ticker ul[aria-hidden]{display:none}}
+
+/* events */
+.events-head{display:grid;gap:8px;margin-bottom:clamp(32px,5vw,56px)}
+.poster-card{position:sticky;top:calc(var(--nav-h) + env(safe-area-inset-top,0px) + 10px + var(--i)*16px);border-radius:22px;color:var(--wall);padding:clamp(22px,4vw,48px);display:grid;gap:clamp(18px,3vw,40px);margin-bottom:22px;box-shadow:0 -14px 40px -18px rgba(10,0,6,.8)}
+.poster-card h3{font-size:clamp(2.4rem,9vw,5.5rem)}
+.poster-card p{max-width:40ch;font-size:1.1rem;font-weight:500;margin-top:14px}
+.poster-card .btn{margin-top:22px}
+.poster-card .shots{display:grid;gap:12px;grid-template-columns:1fr}
+.poster-card .shots img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px}
+.poster-card .shots img + img{display:none}
+.ev-music{background:var(--pink)} .ev-comedy{background:var(--sun)} .ev-games{background:var(--teal)}
+@media (min-width:860px){
+  .poster-card{grid-template-columns:1fr 1.15fr;align-items:center;min-height:min(74svh,640px)}
+  .poster-card .shots{grid-template-columns:1.5fr 1fr}
+  .poster-card .shots img + img{display:block;aspect-ratio:3/4;height:100%}
+  .poster-card .shots.solo{grid-template-columns:1fr}
+  .ev-comedy .shots{order:-1}
+}
+@media (max-height:620px){.poster-card{position:relative;top:0}}
+.events-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:30px}
+
+/* menu */
+.menu{background:var(--wall-2);border-block:1px solid var(--line)}
+.menu-top{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:end;justify-content:space-between}
+.switch{display:inline-flex;padding:5px;border-radius:999px;background:var(--wall);border:1px solid var(--line)}
+.switch button,.pills button{font:700 .95rem/1 var(--body);border:0;cursor:pointer;border-radius:999px;color:var(--cream);background:transparent;transition:background-color 180ms ease,color 180ms ease,transform 160ms var(--ease-out)}
+.switch button{padding:12px 18px}
+.switch button[aria-pressed="true"]{background:var(--cream);color:var(--wall)}
+.pills{display:flex;gap:8px;overflow-x:auto;padding:4px var(--gutter) 14px;margin:28px calc(var(--gutter)*-1) 0;scroll-snap-type:x proximity;scrollbar-width:none}
+.pills::-webkit-scrollbar{display:none}
+.pills button{flex:none;padding:12px 18px;border:1.5px solid var(--line);scroll-snap-align:start}
+.pills button:active{transform:scale(.97)}
+.pills button[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:var(--wall)}
+.menu-list{display:grid;gap:22px 56px;margin:26px 0 0;padding:0;list-style:none;transition:opacity 160ms ease}
+.menu-list.swap{opacity:0}
+@media (min-width:820px){.menu-list{grid-template-columns:1fr 1fr}}
+.item-row{display:flex;align-items:baseline;gap:10px}
+.item-row b{font-weight:700;font-size:1.1rem}
+.item-row i{flex:1;min-width:16px;border-bottom:2px dotted var(--line);transform:translateY(-4px)}
+.item-row span{font-weight:700;color:var(--orange);font-variant-numeric:tabular-nums;white-space:nowrap}
+.menu-list p{color:var(--blush);font-size:.95rem;margin-top:4px;max-width:46ch}
+.flag{display:inline-block;font:700 .7rem/1 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:999px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.flag.fav{background:var(--teal);color:var(--wall)} .flag.hot{background:var(--pink);color:var(--wall)}
+.cols-note{color:var(--blush);font-size:.9rem;margin-top:10px}
+.menu-foot{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);color:var(--blush);font-size:.95rem;display:flex;flex-wrap:wrap;gap:8px 28px}
+
+/* food wall */
+.food-grid{columns:2;column-gap:12px;margin-top:clamp(28px,4vw,48px)}
+.food-grid img{width:100%;border-radius:14px;margin-bottom:12px;break-inside:avoid}
+@media (min-width:760px){.food-grid{columns:3;column-gap:16px}.food-grid img{margin-bottom:16px}}
+@media (min-width:1100px){.food-grid{columns:4}}
+
+/* space strip */
+.space{background:var(--wall-2);border-block:1px solid var(--line)}
+.strip{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--gutter) 18px;margin-top:clamp(28px,4vw,48px);scrollbar-color:var(--orange) transparent}
+.strip img{flex:none;height:clamp(260px,46vw,460px);width:auto;border-radius:14px;scroll-snap-align:center}
+
+/* owner note */
+.note{text-align:left}
+.note blockquote{margin:0;font:400 clamp(1.9rem,5.6vw,4rem)/1.08 var(--display);max-width:18ch}
+.note figcaption{margin-top:22px;color:var(--blush)}
+.note-grid{display:grid;gap:36px;align-items:center}
+.note-grid p{color:var(--blush);max-width:48ch}
+.note-grid p + p{margin-top:14px}
+@media (min-width:900px){.note-grid{grid-template-columns:1.1fr .9fr;gap:72px}}
+
+/* visit */
+.visit{background:var(--cream);color:var(--wall)}
+.visit ::selection{background:var(--wall);color:var(--cream)}
+.visit :focus-visible{outline-color:var(--wall)}
+.rating{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;padding:18px 22px;border-radius:22px;background:var(--wall);color:var(--cream);margin-top:30px;width:fit-content;max-width:100%}
+.rating strong{font:400 3rem/1 var(--display);color:var(--sun)}
+.stars{position:relative;display:inline-block;font-size:1.5rem;line-height:1;letter-spacing:2px;color:rgba(255,240,224,.25)}
+.stars::before{content:"★★★★★"}
+.stars::after{content:"★★★★★";position:absolute;inset:0;width:84%;overflow:hidden;color:var(--sun);white-space:nowrap}
+.rating a{font-weight:700}
+.visit-grid{display:grid;gap:36px;margin-top:clamp(32px,5vw,56px)}
+@media (min-width:900px){.visit-grid{grid-template-columns:1fr 1fr;gap:56px}}
+.facts{display:grid;gap:26px}
+.facts h3{font:700 .8rem/1 var(--body);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;opacity:.7}
+.facts address{font-style:normal;font-size:1.2rem;font-weight:500}
+.hours{border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:1.1rem;font-weight:500}
+.hours td{padding:3px 22px 3px 0}
+.open{display:inline-flex;align-items:center;gap:8px;font-weight:700;margin-top:10px}
+.open::before{content:"";width:10px;height:10px;border-radius:50%;background:currentColor}
+.open.yes{color:#0B6B4F} .open.no{color:#A3223F}
+.reach{display:grid;gap:10px}
+.reach div{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:1.15rem;font-weight:500}
+.reach small{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7;min-width:88px}
+.copy{font:700 .8rem/1 var(--body);border:1.5px solid var(--wall);background:transparent;color:var(--wall);border-radius:999px;padding:7px 12px;cursor:pointer;transition:transform 160ms var(--ease-out)}
+.copy:active{transform:scale(.96)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.map{display:grid;align-content:end;min-height:340px;border-radius:22px;padding:26px;text-decoration:none;color:var(--cream);position:relative;overflow:hidden;background:var(--wall)}
+.map img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;transition:transform 500ms var(--ease-out)}
+.map::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--wall) 12%,rgba(43,10,24,.1) 70%)}
+.map > *:not(img){position:relative;z-index:1}
+.map b{font:400 clamp(1.8rem,4vw,2.6rem)/1 var(--display);display:block}
+.map span{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-weight:700;color:var(--orange)}
+.map svg{width:20px;height:20px}
+@media (hover:hover) and (pointer:fine){.map:hover img{transform:scale(1.04)}}
+
+/* footer */
+footer{padding-block:56px calc(56px + 76px);border-top:1px solid var(--line)}
+.foot{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between}
+.foot-brand{font:400 clamp(2.2rem,7vw,4rem)/1 var(--display)}
+.social{display:flex;gap:10px;flex-wrap:wrap}
+.fine{margin-top:28px;color:var(--blush);font-size:.9rem}
+@media (min-width:860px){footer{padding-bottom:56px}}
+
+/* mobile action bar */
+.bar{position:fixed;inset:auto 0 0 0;z-index:60;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--wall);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bar a{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 4px 9px;text-decoration:none;font:700 .8rem/1 var(--body);transition:transform 160ms var(--ease-out)}
+.bar a:active{transform:scale(.96)}
+.bar a:nth-child(2){background:var(--orange);color:var(--wall)}
+.bar svg{width:22px;height:22px}
+@media (min-width:860px){.bar{display:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="BruTown Cafe, back to top"><span><img src="img/cup.png" alt="" width="160" height="124"></span>BruTown</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#events">Events</a><a href="#menu">Menu</a><a href="#space">The space</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn-go" href="https://wa.me/8801610002041?text=Hi%20BruTown%2C%20I%27d%20like%20to%20reserve%20a%20table" target="_blank" rel="noopener">Reserve a table</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-pin">
+    <div class="hero-wall" aria-hidden="true"><img src="img/wall.webp" alt="" width="1400" height="1867" fetchpriority="high"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1><span class="o">Live.</span> <span class="p">Love.</span> <span class="t">Eat.</span></h1>
+        <p class="hero-sub">Coffee, comfort food, board games, live music and stand-up nights. Your regular spot in Siddeswari, Dhaka.</p>
+        <div class="hero-cta">
+          <a class="btn btn-go" href="#menu">See the menu</a>
+          <a class="btn btn-line" href="#events">What's on</a>
+          <span class="tag" aria-hidden="true">aro order kori!</span>
+        </div>
+      </div>
+      <div class="stack">
+        <figure class="print p1"><img src="img/music-1.webp" alt="A full room watching a live acoustic set at BruTown under purple lights" width="1400" height="1050"><figcaption>live music</figcaption></figure>
+        <figure class="print p2"><img src="img/comedy-1.webp" alt="A comedian on the mic in front of a seated crowd at BruTown" width="1200" height="1200"><figcaption>stand-up nights</figcaption></figure>
+        <figure class="print p3"><img src="img/games-1.webp" alt="A game of Ticket to Ride spread across a BruTown table" width="1400" height="1049"><figcaption>board games</figcaption></figure>
+        <figure class="print poster p4"><img src="img/poster.webp" alt="BruTown illustration of three friends in sunglasses, one holding a coffee cup" width="433" height="700"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-label="Services">
+  <div class="ticker-track">
+    <ul><li>Dine-in</li><li>Delivery</li><li>Takeout</li><li>Reservations</li><li>In-store pickup</li></ul>
+    <ul aria-hidden="true"><li>Dine-in</li><li>Delivery</li><li>Takeout</li><li>Reservations</li><li>In-store pickup</li></ul>
+  </div>
+</div>
+
+<section class="sec" id="events">
+  <div class="wrap">
+    <div class="events-head">
+      <h2 class="rise">Nights that <span class="o">get loud.</span></h2>
+      <p class="lede">The food is half the reason people come back. The other half happens after dark.</p>
+    </div>
+
+    <article class="poster-card ev-music" style="--i:0">
+      <div>
+        <h3>Live music</h3>
+        <p>Acoustic sets, the lights turned down and every chair facing the stage. Come early if you want a seat near the front.</p>
+        <a class="btn btn-dark" href="https://www.facebook.com/BruTownCafe/" target="_blank" rel="noopener">See upcoming gigs</a>
+      </div>
+      <div class="shots"><img class="wipe" src="img/music-1.webp" alt="Crowd watching two musicians perform at BruTown" loading="lazy" width="1400" height="1050"><img src="img/music-2.webp" alt="Guitarist and singer on the BruTown stage, seen from the back of the room" loading="lazy" width="1000" height="1333"></div>
+    </article>
+
+    <article class="poster-card ev-comedy" style="--i:1">
+      <div>
+        <h3>Stand-up comedy</h3>
+        <p>A mic, a brick wall and a room that came to laugh. Show dates go up on our Facebook page first.</p>
+        <a class="btn btn-dark" href="https://www.facebook.com/BruTownCafe/" target="_blank" rel="noopener">Find the next show</a>
+      </div>
+      <div class="shots solo"><img class="wipe" src="img/comedy-1.webp" alt="Stand-up comedian performing to a packed BruTown crowd" loading="lazy" width="1200" height="1200" style="aspect-ratio:16/10"></div>
+    </article>
+
+    <article class="poster-card ev-games" style="--i:2">
+      <div>
+        <h3>Board games</h3>
+        <p>The Town Board Room has 35+ curated games and counting. Ticket to Ride, Splendor and plenty more. Pull two tables together and stay a while.</p>
+        <a class="btn btn-dark" href="https://wa.me/8801610002041?text=Hi%20BruTown%2C%20I%27d%20like%20to%20book%20a%20board%20game%20table" target="_blank" rel="noopener">Book a game table</a>
+      </div>
+      <div class="shots"><img class="wipe" src="img/games-1.webp" alt="Ticket to Ride in play on a BruTown table" loading="lazy" width="1400" height="1049"><img src="img/games-2.webp" alt="Splendor cards and gem tokens laid out mid-game" loading="lazy" width="1000" height="1333"></div>
+    </article>
+  </div>
+</section>
+
+<section class="sec menu" id="menu">
+  <div class="wrap">
+    <div class="menu-top">
+      <h2 class="rise">Eat as much <span class="p">as you want.</span></h2>
+      <div class="switch" role="group" aria-label="Choose a menu">
+        <button type="button" id="m-brutown" aria-pressed="true">BruTown Cafe</button>
+        <button type="button" id="m-nervosa" aria-pressed="false">Nervosa by BruTown</button>
+      </div>
+    </div>
+    <div class="pills" id="pills" role="group" aria-label="Menu categories"></div>
+    <p class="cols-note" id="cols-note" hidden></p>
+    <ul class="menu-list" id="menu-list" aria-live="polite"></ul>
+    <div class="menu-foot"><span>Prices in Bangladeshi taka (Tk).</span><span>VAT and SD included.</span><span>5% service charge applies.</span></div>
+  </div>
+</section>
+
+<section class="sec" id="food">
+  <div class="wrap">
+    <h2 class="rise">Straight from <span class="t">the pass.</span></h2>
+    <p class="lede">Steaks, grilled fish, loaded sandwiches, cheesecake and a mojito to cool it all down.</p>
+    <div class="food-grid">
+      <img src="img/food-3.webp" alt="Sliced steak with greens, mashed potato and a baked potato in foil" loading="lazy" width="910" height="960">
+      <img src="img/food-1.webp" alt="Mint mojito in a tall glass" loading="lazy" width="1100" height="783">
+      <img src="img/food-8.webp" alt="Grilled fish fillet with rice, vegetables and a spicy sauce" loading="lazy" width="1100" height="1467">
+      <img src="img/food-6.webp" alt="Grilled beef and cheese sandwich with fries" loading="lazy" width="1100" height="886">
+      <img src="img/food-5.webp" alt="Slice of cheesecake on a speckled plate" loading="lazy" width="1100" height="825">
+      <img src="img/food-12.webp" alt="Grilled chicken with potato wedges and a creamy sauce" loading="lazy" width="1100" height="1467">
+      <img src="img/food-2.webp" alt="Bowl of flat noodles with vegetables" loading="lazy" width="1100" height="825">
+      <img src="img/food-9.webp" alt="Nervosa by BruTown takeaway coffee cup" loading="lazy" width="1100" height="1802">
+      <img src="img/food-7.webp" alt="Herb grilled chicken with paneer and fresh salad" loading="lazy" width="1100" height="825">
+      <img src="img/food-11.webp" alt="Minced beef loaf with potatoes and two sauces" loading="lazy" width="1100" height="1467">
+    </div>
+  </div>
+</section>
+
+<section class="sec space" id="space">
+  <div class="wrap">
+    <h2 class="rise">Pick <span class="y">your corner.</span></h2>
+    <p class="lede">Brick walls, a swing seat, shelves full of books and games, and armchairs made for long conversations.</p>
+  </div>
+  <div class="strip" tabindex="0" aria-label="Photos of the cafe interior, scroll sideways">
+    <img src="img/space-6.webp" alt="Main seating area with orange chairs, brick wall and a graffiti counter" loading="lazy" width="1300" height="866">
+    <img src="img/space-1.webp" alt="Window nook with a hanging swing seat and orange walls" loading="lazy" width="1300" height="1181">
+    <img src="img/space-4.webp" alt="Lounge corner with a newspaper wall and neon sign" loading="lazy" width="1300" height="1083">
+    <img src="img/space-3.webp" alt="Brick wall and a mural of a red vintage car" loading="lazy" width="1300" height="1181">
+    <img src="img/space-7.webp" alt="Teal armchair beside open shelves and framed prints" loading="lazy" width="1300" height="1181">
+    <img src="img/space-2.webp" alt="View through green shelving to the brick dining room" loading="lazy" width="1300" height="812">
+    <img src="img/space-8.webp" alt="A guest browsing the bookshelf wall" loading="lazy" width="1284" height="1577">
+    <img src="img/space-5.webp" alt="Dining room with round tables and a gallery wall" loading="lazy" width="1300" height="904">
+  </div>
+</section>
+
+<section class="sec note">
+  <div class="wrap note-grid">
+    <figure style="margin:0">
+      <blockquote>“Pro tip: never use the <span class="o">Nes word</span> at BruTown.”</blockquote>
+      <figcaption>From the owner's note on the back of our menu</figcaption>
+    </figure>
+    <div>
+      <p>“You walk in, and it's a whole performance. ‘Can I get a cappuccino or an Americano?’ The barista just smiles, a smile that says, ‘I have seen you before, you will be back.’”</p>
+      <p>“Then there's the food. You take that first bite and you're in your own little world, until your friend says ‘aro order kori!’”</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec visit" id="visit">
+  <div class="wrap">
+    <h2>Come hang out.</h2>
+    <div class="rating">
+      <strong>4.2</strong>
+      <div><span class="stars" role="img" aria-label="4.2 out of 5 stars"></span><br>2,725 reviews on Google</div>
+      <a href="https://maps.app.goo.gl/qj9ZL5W2DqJHPynN7" target="_blank" rel="noopener">Read the reviews</a>
+    </div>
+    <div class="visit-grid">
+      <div class="facts">
+        <div>
+          <h3>Address</h3>
+          <address>62/A Siddeswari Road, Safa Apartment<br>Dhaka 1217, Bangladesh</address>
+        </div>
+        <div>
+          <h3>Opening hours</h3>
+          <table class="hours">
+            <tr><td>Sunday to Thursday</td><td>10:00 AM to 10:30 PM</td></tr>
+            <tr><td>Friday and Saturday</td><td>9:00 AM to 10:30 PM</td></tr>
+          </table>
+          <div class="open" id="open" hidden></div>
+        </div>
+        <div class="reach">
+          <div><small>Call</small><a href="tel:+8801772992551" id="n-call">01772-992551</a><button class="copy" type="button" id="c-call" data-copy="01772992551">Copy</button></div>
+          <div><small>WhatsApp</small><a href="https://wa.me/8801610002041" target="_blank" rel="noopener" id="n-wa">+880 1610-002041</a><button class="copy" type="button" id="c-wa" data-copy="+8801610002041">Copy</button></div>
+          <div><small>Email</small><a href="mailto:brutowncafe@gmail.com">brutowncafe@gmail.com</a><button class="copy" type="button" id="c-mail" data-copy="brutowncafe@gmail.com">Copy</button></div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-go" href="https://wa.me/8801610002041?text=Hi%20BruTown%2C%20I%27d%20like%20to%20reserve%20a%20table" target="_blank" rel="noopener"><i data-lucide="message-circle"></i>Reserve a table</a>
+          <a class="btn btn-dark" href="tel:+8801772992551"><i data-lucide="phone"></i>Call us</a>
+        </div>
+      </div>
+      <a class="map" href="https://maps.app.goo.gl/qj9ZL5W2DqJHPynN7" target="_blank" rel="noopener">
+        <img src="img/space-6.webp" alt="" loading="lazy" width="1300" height="866">
+        <b>Siddeswari Road, Dhaka</b>
+        <span><i data-lucide="map-pin"></i>Get directions on Google Maps</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand"><span class="o">Live.</span> <span class="p">Love.</span> <span class="t">Eat.</span></div>
+      <div class="social">
+        <a class="btn btn-line" href="https://www.facebook.com/BruTownCafe/" target="_blank" rel="noopener"><i data-lucide="facebook"></i>Facebook</a>
+        <!-- TODO: Instagram link not supplied. Add the profile URL here. -->
+      </div>
+    </div>
+    <p class="fine">BruTown Cafe, 62/A Siddeswari Road, Dhaka 1217. Menu and prices as printed on the cafe's current menu cards.</p>
+  </div>
+</footer>
+
+<nav class="bar" aria-label="Quick actions">
+  <a href="tel:+8801772992551"><i data-lucide="phone"></i>Call</a>
+  <a href="https://wa.me/8801610002041" target="_blank" rel="noopener"><i data-lucide="message-circle"></i>WhatsApp</a>
+  <a href="https://maps.app.goo.gl/qj9ZL5W2DqJHPynN7" target="_blank" rel="noopener"><i data-lucide="map-pin"></i>Directions</a>
+</nav>
+</div>
+
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<script>
+// [name, price, description, flags] f = house favourite, s = spicy (both as marked on the printed menu)
+const MENUS = {
+  brutown: {
+    "Appetizers": [["Breaded Calamari","420+","Ten pieces of imported calamari, deep fried, with oriental sauce and garlic mayo."],["Cheesy Beef & Fries","440+","Chopped beef bolognese with fries and mozzarella cheese sauce.","f"],["Breaded Chicken Strips","395+","Crumbed chicken strips with roasted potatoes, spicy chilli sauce and tartar sauce.","f"],["Prawn Tempura","470+","Six prawns with chef's special sweet chilli sauce."],["Cheesy Garlic Mushrooms","355+","Spiced mushrooms under melted cheese, with cheesy garlic bread."],["Nachos","380+","Tortilla chips topped with chicken, fresh tomato salsa and melted cheese.","s"],["Potato Wedges","220+","With garlic mayonnaise and ketchup."],["French Fries","180+","With garlic mayonnaise and ketchup."]],
+    "Soups": [["Chicken Corn","220+","Traditional style, served with roasted peanuts."],["Chicken Meat Ball","250+","Garlic chicken soup with chicken meat balls, glass noodles and seasonal vegetables.","f"],["Cream of Chicken","250+","Hearty, warm, creamy and mild."],["Cream of Mushroom","270+","Thick and creamy.","f"],["Seafood Chowder","270+","Velvety smooth bowl of seafood soup."],["Thai Clear","260+","Fiery hot, with sour and sweet overtones.","s"],["Thai Thick","270+","Fiery hot, with sour and sweet overtones.","s"]],
+    "Salads": [["Chicken & Pasta","435+","Shredded chicken, fresh vegetables and pasta in honey mustard vinaigrette.","f"],["Chicken & Cheese","460+","Smoked chicken, mozzarella and fresh vegetables in cilantro mint dressing.","f"],["Spicy Seafood","450+","Prawns, dory and calamari in a fiery Thai sauce with assorted vegetables.","s"],["Chicken Cashew Nut","540+","Chicken with vinaigrette dressing and a generous sprinkling of cashew nuts."],["Roast Beef","460+","Shredded roast beef and assorted vegetables with chef's special sauce.","s"]],
+    "Sandwiches": [["Grilled Chicken","Half 200+ / Full 390+","Juicy grilled chicken with cheese, fries on the side."],["Chicken Torpedo","460+","Diced chicken and mushrooms on a sub roll, baked with mozzarella. Fries on the side.","f"],["Salted Beef Bonanza","590+","Shredded salted beef, pickled cucumber and cheese on grilled brown bread, with home cut fries.","f"],["Royal Club","460+","Roasted chicken, cheese, egg and veggies, with french fries."],["Sunrisers Sandwich","390+","House baked brown bread with fried egg, smoked chicken cold cut, cheese, lettuce and pickles. Roasted potatoes on the side."],["Beef Steak","470+","Tenderloin beef with caramelized mushrooms, onions and cheese on freshly baked bread. Home made fries."]],
+    "Pizzas": [["Grilled Beef","700+ / 810+","Julienne cut grilled beef tenderloin, Italian tomato sauce and mozzarella.","f"],["Chicken Fest","690+ / 790+","Grilled chicken, chicken sausage, Italian tomato sauce and mozzarella.","f"],["Beef Tangy","690+ / 840+","Italian tomato sauce, beef bolognese, mushroom, onion, tomato and cheese.","s"],["B.B.Q Chicken","690+ / 820+","Italian tomato sauce, barbequed chicken and cheese."],["Chicken Fungi","690+ / 820+","Diced chicken, mushrooms, bell peppers, black olive, chilli flakes and mozzarella."]],
+    "Pastas": [["Furiosa Fusilli","470+","Diced chicken, fresh tomatoes and fusilli in a spicy creamy sauce. Baked.","sf"],["Baked Not Stirred","440+","Chicken and penne in creamy sauce, baked with plenty of mozzarella.","f"],["Spaghetti Carbonara","480+","Spaghetti with smoked chicken, egg yolk, olive oil and parmesan."],["Chicken Mushroom Cannelloni","380+","Chicken and mushroom cheese filling, topped with sauce and mozzarella."],["Fettuccine Alfredo","470+","With sautéed chicken, mushroom and creamy sauce.","f"],["Aglio Olio Peperoncino (A.O.P)","520+","Spaghetti, garlic and dry red chilli in olive oil, with mini beef steaks in pepper sauce and parmesan.","f"],["Spaghetti Meat Balls","475+","Spaghetti in Italian tomato sauce with mushrooms and minced beef meat balls."]],
+    "Burgers": [["Grilled Chicken","350+","Flame grilled chicken on a sesame seed bun with cheese, lettuce and onions. Fries on the side."],["BruTown's Signature","490+","Ground beef fused in wasabi sauce, with lettuce, tomatoes and onions. Potato wedges, garlic mayo and extra wasabi on the side."],["BruTown's Classique 2.0","690+","Chunky ground beef patty with beef bacon, cheese, fried egg, onions, tomato and lettuce. Home cut fries.","f"],["Naga Chicken","390+","Fire in the hole! Two pieces of chicken with lettuce and cheese, glazed with naga sauce. Fries on the side.","sf"]],
+    "Seafood": [["Thai Style Steamed Fish","890+","250 gm coral fish fillet in lemon ginger sauce and oriental spices, with zesty lemon rice.","f"],["Fish and Chips","460+","Deep fried fish fillet with fries and tartar sauce."],["Fish Cotalota","690+","Pan fried dory fillet wrapped in melted cheese, with sautéed mushrooms and garlic rice."],["Grilled Fish","890+","200 gm grilled coral fish with buttered potatoes, sautéed vegetables, garlic bread and mandarin butter sauce."]],
+    "Chef's Brigade": [["Sir Beef Mincelot","670+","Tender minced beef loaf with buttered potatoes and cauliflower, pumpkin and green beans dip, gyeoja sauce.","f"],["Chicken Freya","520+","Pan grilled chicken breast with garlic cream sauce, buffalo potatoes and cheesy vegetables.","f"],["Chicken Strata","550+","Chicken sausage wrapped in smoked chicken inside a tender chicken breast, with sautéed vegetables and home cut potato chips.","f"],["Thyme Chicken","530+","Shallow grilled chicken breast in thyme sauce, with cheese baked potato and garden salad."],["Paprika Chicken","550+","Pan grilled chicken breast in smoky paprika sauce, with grilled bell peppers and creamy basil potatoes."]],
+    "Classic Mains": [["Soy Ginger Beef","490+","Beef tenderloin in soy sauce with julienne ginger and carrots, sesame seed and fried rice."],["Grilled Chicken","480+","Italian style, with sautéed vegetables and mashed potatoes or fried rice.","f"],["Shepherd's Pie","500+","Minced beef layered with cheese and mashed potatoes."],["Oriental Chicken","420+","Shredded chicken and seasonal vegetables in thick oyster sauce, with lemon rice or fried rice."],["Beef Pepper Steak","790+","200 gm tenderloin smothered in pepper sauce, with mashed potatoes and sautéed mushrooms.","f"]],
+    "Add-ons": [["Fried Rice","150+"],["Garlic Rice","150+"],["Lemon Rice","150+"],["Sautéed Vegetable","150+"],["Mashed Potatoes","150+"],["Garlic Sauce","40+"]],
+    "Espresso": [["Espresso","145+ / 195+"],["Americano","170+ / 225+"],["Cappuccino","215+ / 265+"],["Latte","215+ / 265+"],["Macchiato","200+ / 260+"],["Hazelnut Latte","280+ / 320+"],["Vanilla Latte","280+ / 320+"],["Caramel Latte","280+ / 320+"],["French Vanilla Latte","280+ / 320+"],["Mocha","300+ / 360+"],["White Mocha","295+ / 360+"]],
+    "Iced Coffee": [["Iced Americano","180+ / 235+"],["Iced Coffee","220+ / 265+"],["Iced Caramel Coffee","285+ / 330+"],["Iced Vanilla Coffee","285+ / 330+"],["Iced Hazelnut Latte","285+ / 330+"],["Iced Mocha / White Mocha","310+ / 370+"],["Java","300+ / 350+","Coffee with ice-cream."]],
+    "Shakes & Frappe": [["Blueberry Shake","255+"],["Caramel Shake","260+"],["Chocolate Shake","240+"],["Goa Lemon","250+"],["Oreo Shake","260+"],["Chocolate Frappe","290+"],["Hazelnut Frappe","290+"],["Mango Frappe","290+"],["Monster Berry Frappe","290+"],["Peach Frappe","290+"],["Strawberry Frappe","290+"]],
+    "Mocktails": [["Blueberry Mojito","250+"],["Blue Moon","240+"],["Virgin Mojito","230+"],["Orange Mojito","230+"],["Coconut Sunrise","245+"],["Coconut Pineapple Sunset","250+"],["Refresh Mint","230+"],["Peach Iced Tea","180+"],["Lemon Iced Tea","180+"],["Green Apple Punch","245+"],["Lemon Mint Punch / Green Mint Punch","245+"],["BruTown Special Orange Mint","295+"]],
+    "Pastries": [["Blueberry Cheesecake","240+"],["Baked Blueberry Cheesecake","270+"],["Biscoff Cheesecake","395+"],["Baked Cheesecake","275+"],["Crème Brûlée","190+"],["Chocolate Tart","230+"],["Lemon Cheesecake","240+"],["Mango Cheesecake","295+"],["Oreo Cheesecake","260+"],["Red Velvet","240+"],["Nutella Cheesecake","275+"],["Tiramisu","260+"],["Brownie","145+"],["Brownie w/ Ice-cream","210+"],["Nutella Cupcake","180+"]],
+    "Hot & Soft Drinks": [["Hot Chocolate","250+"],["Tea","100+","Green, Earl Grey or ginger."],["Coca Cola, Sprite, Fanta","50+"],["Water","20"]]
+  },
+  nervosa: {
+    "Breakfast": [["Nervosa Pro Breakfast","390+","Baked beans in chef's special sauce, double chicken sausages, eggs your way, grilled mushrooms, roasted potatoes, toast and grilled tomato. Comes with an Americano, cappuccino or hot chocolate."],["Nervosa Mini Breakfast","280+","Mushroom or cheese omelette, double chicken sausages and toast. Comes with an Americano, cappuccino or hot chocolate."],["Nervosa Sweet Breakfast","380+","Vanilla pancake topped with blueberry, cream-cheese on the side. Comes with an Americano, cappuccino or hot chocolate."],["Egg Sandwich","250+","On in-house baked brown bread, fries on the side."],["Chicken-Mortadella Sandwich","395+","In-house multigrain bread with chicken-mortadella, lettuce, onion and cheese. Roasted potatoes on the side."]],
+    "Bakery": [["Butter Croissant","150+"],["Chocolate Croissant","230+"],["Korean Sausage Bun","160+"],["Chicken Puff","150+"],["Crispy Chicken Pizza Bun","160+"],["Chicken Shawarma Bun","170+"]],
+    "Waffle & Pancake": [["Vanilla Waffle","350+","Topped with cream-cheese and maple syrup."],["Red Velvet Waffle","370+","Topped with cream-cheese and maple syrup."],["Vanilla Pancake","350+","Topped with cream-cheese and maple syrup."],["Red Velvet Pancake","370+","Topped with cream-cheese and maple syrup."]],
+    "Starters": [["Chicken Satay","380+","Six grilled chicken strips with Thai style spicy peanut sauce."],["Deep Fried Calamari","420+","Ten breaded imported calamari rings with garlic mayo and oriental sauce."],["Fish Finger","420+","Six breaded dory fish fingers with tartar sauce and home-cut fries."],["Barbeque Chicken Lollipop","250+","Six battered chicken wings with barbeque sauce."],["Fried Chicken","400+","Six pieces marinated in Thai flavour, with home-cut fries and spicy tomato sauce."],["Chicken Chow Mein","270+","Stir-fried noodles with chicken, eggs and seasonal vegetables."],["Home Cut Fries","130+"]],
+    "Sandwich & Mains": [["Grilled Beef Tenderloin Sandwich","460+","In-house bread with grilled beef tenderloin, butter-mayo, lettuce, onion rings and tomato. Fries on the side."],["Chicken Chilli Sandwich","370+","In-house sourdough with chicken-chilli, butter-mayo, lettuce, tomato and cheese. Roasted potatoes on the side."],["Chicken Tandoori Sandwich","390+","In-house croissant with tandoori chicken, lettuce, tomato and onion rings. Roasted potatoes on the side."],["Baked Macaroni","380+","Macaroni and chicken in cream sauce, topped with mozzarella."],["Penne ala Fungi","380+","Penne with sautéed chicken, mushroom and mozzarella."],["Chicken Meal","360+","Two pieces of fried chicken, egg fried rice, mixed vegetables with oyster sauce and fresh salad."],["Beef Meal","450+","Beef chilli onion, egg fried rice, mixed vegetables with oyster sauce and fresh salad."]],
+    "Combos": [["Americano + Butter Croissant","300+"],["Cappuccino + Butter Croissant","320+"],["Latte + Butter Croissant","320+"],["Flavoured Coffee + Butter Croissant","395+"],["Mocha / White Mocha + Butter Croissant","420+"],["Americano / Cappuccino + Caramel Éclair","280+"]]
+  }
+};
+const NOTES = {"Pizzas":"Prices shown as 8 inch / 12 inch.","Espresso":"Prices shown as single / extra shot.","Iced Coffee":"Prices shown as single / extra shot."};
+const list = document.getElementById('menu-list'), pills = document.getElementById('pills'), note = document.getElementById('cols-note');
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let current = 'brutown';
+function showCategory(cat){
+  const items = MENUS[current][cat];
+  const html = items.map(([n,p,d,f='']) =>
+    `<li><div class="item-row"><b>${esc(n)}${f.includes('f')?'<span class="flag fav">Fav</span>':''}${f.includes('s')?'<span class="flag hot">Spicy</span>':''}</b><i></i><span>${/^\d/.test(p)?'Tk ':''}${esc(p)}</span></div>${d?`<p>${esc(d)}</p>`:''}</li>`).join('');
+  [...pills.children].forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === cat));
+  note.hidden = !NOTES[cat]; note.textContent = NOTES[cat] || '';
+  if (!list.innerHTML) { list.innerHTML = html; return; }
+  list.classList.add('swap');
+  setTimeout(() => { list.innerHTML = html; list.classList.remove('swap'); }, 140);
+}
+function showMenu(key){
+  current = key;
+  document.getElementById('m-brutown').setAttribute('aria-pressed', key === 'brutown');
+  document.getElementById('m-nervosa').setAttribute('aria-pressed', key === 'nervosa');
+  const cats = Object.keys(MENUS[key]);
+  pills.innerHTML = cats.map(c => `<button type="button" data-cat="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join('');
+  pills.scrollLeft = 0;
+  showCategory(cats[0]);
+}
+pills.addEventListener('click', e => { const b = e.target.closest('button'); if (b) showCategory(b.dataset.cat); });
+document.getElementById('m-brutown').addEventListener('click', () => showMenu('brutown'));
+document.getElementById('m-nervosa').addEventListener('click', () => showMenu('nervosa'));
+showMenu('brutown');
+
+// Open now, in Dhaka time. Sun-Thu 10:00-22:30, Fri-Sat 09:00-22:30.
+(function(){
+  try {
+    const parts = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dhaka',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    const get = t => parts.find(p => p.type === t).value;
+    const mins = (+get('hour') % 24) * 60 + +get('minute');
+    const opens = ['Fri','Sat'].includes(get('weekday')) ? 540 : 600;
+    const isOpen = mins >= opens && mins < 1350;
+    const el = document.getElementById('open');
+    el.textContent = isOpen ? 'Open now, until 10:30 PM' : 'Closed right now';
+    el.classList.add(isOpen ? 'yes' : 'no'); el.hidden = false;
+  } catch (e) {}
+})();
+
+// Copy buttons
+document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', () => {
+  const done = () => { const t = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => btn.textContent = t, 1400); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(btn.previousElementSibling); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  try { navigator.clipboard.writeText(btn.dataset.copy).then(done, fallback); } catch (e) { fallback(); }
+}));
+
+if (window.lucide) lucide.createIcons();
+</script>
+</body>
+</html>
